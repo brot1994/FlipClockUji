@@ -1,0 +1,37 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'id.bram.fctrial'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId 'id.bram.fctrial'
+        minSdk 24
+        targetSdk 34
+        versionCode 1
+        versionName 'uji-1'
+    }
+
+    signingConfigs {
+        fixed {
+            storeFile file('flipclock.keystore')
+            storePassword 'flipclock123'
+            keyAlias 'flipclock'
+            keyPassword 'flipclock123'
+        }
+    }
+
+    buildTypes {
+        release { minifyEnabled false; signingConfig signingConfigs.fixed }
+        debug { signingConfig signingConfigs.fixed }
+    }
+
+    lint { abortOnError false; checkReleaseBuilds false }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+}
